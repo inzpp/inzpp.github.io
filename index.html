@@ -98,10 +98,10 @@
                 var mapContainer = document.getElementById('map-container');
                 var mapImage = document.getElementById('map');
                 var marker = document.createElement('img');
-                marker.src = 'lokalizacja.png'
-                marker.classList.add('marker');
-                marker.style.position = 'absolute';
-                if(latitude>22.545019 && latitude<22.553962) {
+                if(latitude>22.545019 && latitude<22.553962 && longtitude>51.235197 && longtitude<51.235204) {
+                    marker.src = 'lokalizacja.png'
+                    marker.classList.add('marker');
+                    marker.style.position = 'absolute';
                     marker.style.left = (longitude) * mapImage.width + 'px';
                     marker.style.top = (latitude) * mapImage.height + 'px';
                     mapContainer.appendChild(marker);

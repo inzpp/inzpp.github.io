@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nanieść lokalizację użytkownika na mapę</title>
+    <style>
+        #map-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+        }
+        #map {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="map-container">
+    <img id="map" src="ul. Nadbystrzycka.png" alt="Mapa">
+</div>
+
+<button id="locate-button">Lokalizuj mnie</button>
+
+<script>
+    document.getElementById('locate-button').addEventListener('click', function() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+
+                var mapContainer = document.getElementById('map-container');
+                var mapImage = document.getElementById('map');
+                var marker = document.createElement('div');
+                marker.classList.add('marker');
+                marker.style.position = 'absolute';
+                marker.style.left = ((longitude) / 360) * mapImage.width + 'px';
+                marker.style.top = ((latitude) / 180) * mapImage.height + 'px';
+                marker.innerHTML = 'X';
+                mapContainer.appendChild(marker);
+            }, function(error) {
+                console.error('Błąd Geolocation: ' + error.message);
+            });
+        } else {
+            alert('Twoja przeglądarka nie obsługuje Geolocation.');
+        }
+    });
+</script>
+
+</body>
+</html>

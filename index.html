@@ -101,7 +101,7 @@
                 marker.src = 'lokalizacja.png'
                 marker.classList.add('marker');
                 marker.style.position = 'absolute';
-                if(latitude>23) {
+                if(latitude>22.545019 && latitude<22.553962) {
                     marker.style.left = (longitude) * mapImage.width + 'px';
                     marker.style.top = (latitude) * mapImage.height + 'px';
                     mapContainer.appendChild(marker);

@@ -101,9 +101,11 @@
                 marker.src = 'lokalizacja.png'
                 marker.classList.add('marker');
                 marker.style.position = 'absolute';
-                marker.style.left = ((longitude)/1000) * mapImage.width + 'px';
-                marker.style.top = ((latitude)/1000) * mapImage.height + 'px';
-                mapContainer.appendChild(marker);
+                if(latitude>23) {
+                    marker.style.left = (longitude) * mapImage.width + 'px';
+                    marker.style.top = (latitude) * mapImage.height + 'px';
+                    mapContainer.appendChild(marker);
+                }
             }, function(error) {
                 console.error('Błąd Geolocation: ' + error.message);
             });
